@@ -19,62 +19,70 @@ class GameScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('9-Card Golf Game'),
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView.builder(
-              itemCount: gameModel.numPlayers,
-              itemBuilder: (context, playerIndex) {
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text('Player ${playerIndex + 1}'),
-                    ),
-                    GridView.builder(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 3,
+      body: Stack(children: [
+        Positioned.fill(
+          child: Image.asset(
+            'assets/images/background.png',
+            fit: BoxFit.cover, // Ensures the image covers the whole area
+          ),
+        ),
+        Column(
+          children: [
+            Expanded(
+              child: ListView.builder(
+                itemCount: gameModel.numPlayers,
+                itemBuilder: (context, playerIndex) {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text('Player ${playerIndex + 1}'),
                       ),
-                      itemCount: gameModel.playerHands[playerIndex].length,
-                      itemBuilder: (context, gridIndex) {
-                        bool isVisible =
-                            gameModel.cardVisibility[playerIndex][gridIndex];
-                        var card =
-                            gameModel.playerHands[playerIndex][gridIndex];
-                        return GestureDetector(
-                          onTap: () {
-                            gameModel.toggleCardVisibility(
-                                playerIndex, gridIndex);
-                            gameModel
-                                .saveGameState(); // Save state after changes
-                          },
-                          child: isVisible
-                              ? PlayingCardWidget(card: card)
-                              : const HiddenCardWidget(),
-                        );
-                      },
-                    ),
-                  ],
-                );
-              },
+                      GridView.builder(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 3,
+                        ),
+                        itemCount: gameModel.playerHands[playerIndex].length,
+                        itemBuilder: (context, gridIndex) {
+                          bool isVisible =
+                              gameModel.cardVisibility[playerIndex][gridIndex];
+                          var card =
+                              gameModel.playerHands[playerIndex][gridIndex];
+                          return GestureDetector(
+                            onTap: () {
+                              gameModel.toggleCardVisibility(
+                                  playerIndex, gridIndex);
+                              gameModel
+                                  .saveGameState(); // Save state after changes
+                            },
+                            child: isVisible
+                                ? PlayingCardWidget(card: card)
+                                : const HiddenCardWidget(),
+                          );
+                        },
+                      ),
+                    ],
+                  );
+                },
+              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: ElevatedButton(
-              onPressed: () {
-                gameModel.drawCard(0);
-                gameModel.saveGameState(); // Save state after draw action
-              },
-              child: Text('Draw from Deck (${gameModel.deck.length} left)'),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: ElevatedButton(
+                onPressed: () {
+                  gameModel.drawCard(0);
+                  gameModel.saveGameState(); // Save state after draw action
+                },
+                child: Text('Draw from Deck (${gameModel.deck.length} left)'),
+              ),
             ),
-          ),
-        ],
-      ),
+          ],
+        ),
+      ]),
     );
   }
 }

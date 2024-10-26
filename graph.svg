@@ -74,8 +74,14 @@
 <path fill="none" stroke="#aabbaa" stroke-width="1.3" stroke-opacity="0.533333" d="M178.08,-71.7C169.57,-63.54 159.24,-53.63 149.85,-44.62"/>
 <polygon fill="#aabbaa" fill-opacity="0.533333" stroke="#aabbaa" stroke-width="1.3" stroke-opacity="0.533333" points="152.28,-42.1 142.64,-37.71 147.43,-47.16 152.28,-42.1"/>
 </g>
-<!-- /test/widget_test.dart -->
+<!-- /lib/widgets/table_surface.dart -->
 <g id="node6" class="node">
+<title>/lib/widgets/table_surface.dart</title>
+<path fill="Lavender" stroke="black" stroke-width="1.3" d="M249.12,-324C249.12,-324 167.12,-324 167.12,-324 161.12,-324 155.12,-318 155.12,-312 155.12,-312 155.12,-300 155.12,-300 155.12,-294 161.12,-288 167.12,-288 167.12,-288 249.12,-288 249.12,-288 255.12,-288 261.12,-294 261.12,-300 261.12,-300 261.12,-312 261.12,-312 261.12,-318 255.12,-324 249.12,-324"/>
+<text text-anchor="middle" x="208.12" y="-300.75" font-family="Arial" font-size="15.00">table_surface</text>
+</g>
+<!-- /test/widget_test.dart -->
+<g id="node7" class="node">
 <title>/test/widget_test.dart</title>
 <path fill="Lavender" stroke="black" stroke-width="1.3" d="M125,-324C125,-324 57.25,-324 57.25,-324 51.25,-324 45.25,-318 45.25,-312 45.25,-312 45.25,-300 45.25,-300 45.25,-294 51.25,-288 57.25,-288 57.25,-288 125,-288 125,-288 131,-288 137,-294 137,-300 137,-300 137,-312 137,-312 137,-318 131,-324 125,-324"/>
 <text text-anchor="middle" x="91.12" y="-300.75" font-family="Arial" font-size="15.00">widget_test</text>

@@ -7,6 +7,7 @@ digraph "" {
   "/lib/main.dart" [label="main"];
   "/lib/playing_card.dart" [label="playing_card"];
   "/lib/playing_card_widget.dart" [label="playing_card_widget"];
+  "/lib/widgets/table_surface.dart" [label="table_surface"];
   "/test/widget_test.dart" [label="widget_test"];
   "/lib/game_model.dart" -> "/lib/playing_card.dart";
   "/lib/game_screen.dart" -> "/lib/game_model.dart";

@@ -37,28 +37,43 @@ class PlayerSetupScreenState extends State<PlayerSetupScreen> {
       appBar: AppBar(
         title: const Text('Enter Player Names'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TextField(
-              controller: _controller,
-              decoration: InputDecoration(
-                hintText: 'Enter names separated by space, comma, or semicolon',
-                errorText: _errorText.isEmpty ? null : _errorText,
-              ),
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                _startGame(context);
-              },
-              child: const Text('Start Game'),
-            ),
-          ],
+      // Set the background color to a green color
+      backgroundColor:
+          const Color.fromARGB(255, 4, 69, 4), // Choose a color for felt
+      body: Stack(children: [
+        Positioned.fill(
+          child: Image.asset(
+            'assets/images/background.png',
+            fit: BoxFit.cover, // Ensures the image covers the whole area
+          ),
         ),
-      ),
+        Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                color: Colors.green.shade100,
+                child: TextField(
+                  controller: _controller,
+                  decoration: InputDecoration(
+                    hintText:
+                        'Enter names separated by space, comma, or semicolon',
+                    errorText: _errorText.isEmpty ? null : _errorText,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  _startGame(context);
+                },
+                child: const Text('Start Game'),
+              ),
+            ],
+          ),
+        ),
+      ]),
     );
   }
 
