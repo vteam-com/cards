@@ -1,0 +1,18 @@
+digraph "" {
+  graph [style=rounded fontname="Arial Black" fontsize=13 penwidth=2.6];
+  node [shape=rect style="filled,rounded" fontname=Arial fontsize=15 fillcolor=Lavender penwidth=1.3];
+  edge [penwidth=1.3];
+  "/lib/game_model.dart" [label="game_model"];
+  "/lib/game_screen.dart" [label="game_screen"];
+  "/lib/main.dart" [label="main"];
+  "/lib/playing_card.dart" [label="playing_card"];
+  "/lib/playing_card_widget.dart" [label="playing_card_widget"];
+  "/test/widget_test.dart" [label="widget_test"];
+  "/lib/game_model.dart" -> "/lib/playing_card.dart";
+  "/lib/game_screen.dart" -> "/lib/game_model.dart";
+  "/lib/game_screen.dart" -> "/lib/playing_card_widget.dart";
+  "/lib/main.dart" -> "/lib/game_model.dart";
+  "/lib/main.dart" -> "/lib/game_screen.dart";
+  "/lib/playing_card_widget.dart" -> "/lib/playing_card.dart";
+  "/test/widget_test.dart" -> "/lib/main.dart";
+}
