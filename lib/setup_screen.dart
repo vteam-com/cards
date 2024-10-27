@@ -20,7 +20,7 @@ class PlayerSetupScreenState extends State<PlayerSetupScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Enter Player Names'),
+        title: const Text('9 Cards Golf'),
       ),
       // Set the background color to a green color
       backgroundColor:
@@ -37,6 +37,11 @@ class PlayerSetupScreenState extends State<PlayerSetupScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Text(
+                'Enter players names separated by space, comma, or semicolon',
+                style: TextStyle(color: Colors.green.shade100, fontSize: 24),
+              ),
+              const SizedBox(height: 40),
               Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
@@ -45,19 +50,28 @@ class PlayerSetupScreenState extends State<PlayerSetupScreen> {
                 ),
                 child: TextField(
                   controller: _controller,
+                  style: TextStyle(color: Colors.green.shade900, fontSize: 24),
                   decoration: InputDecoration(
-                    hintText:
-                        'Enter players names separated by space, comma, or semicolon',
+                    hintText: 'Names',
                     errorText: _errorText.isEmpty ? null : _errorText,
                   ),
                 ),
               ),
               const SizedBox(height: 40),
-              ElevatedButton(
-                onPressed: () {
-                  _startGame(context);
-                },
-                child: const Text('Start Game'),
+              Material(
+                elevation: 125,
+                shadowColor: Colors.black,
+                borderRadius: BorderRadius.circular(20),
+                child: TextButton(
+                  onPressed: () {
+                    _startGame(context);
+                  },
+                  child: Text(
+                    'Start Game',
+                    style:
+                        TextStyle(color: Colors.green.shade900, fontSize: 20),
+                  ),
+                ),
               ),
             ],
           ),
