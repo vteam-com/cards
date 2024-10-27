@@ -3,13 +3,12 @@ import 'package:cards/playing_card_widget.dart';
 import 'package:flutter/material.dart';
 
 class DeckOfCards extends StatelessWidget {
-  final int cardsRemaining;
-  final PlayingCard? topOpenCard; // Use PlayingCard for the top card
+  final int cardsRemaining; // Ensure this parameter is defined
+  final PlayingCard? topOpenCard;
   final VoidCallback onDrawCard;
-
   const DeckOfCards({
     super.key,
-    required this.cardsRemaining,
+    required this.cardsRemaining, // Ensure correct parameter usage
     this.topOpenCard,
     required this.onDrawCard,
   });
@@ -38,9 +37,9 @@ class DeckOfCards extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Icon(Icons.add_home, size: 50, color: Colors.white),
+                const Icon(Icons.deck, size: 50, color: Colors.white),
                 Text(
-                  '$cardsRemaining cards',
+                  '$cardsRemaining cards', // Proper display of remaining cards
                   style: const TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
@@ -53,8 +52,7 @@ class DeckOfCards extends StatelessWidget {
         ),
         const SizedBox(width: 20), // Space between deck and open cards
         if (topOpenCard != null)
-          PlayingCardWidget(
-              card: topOpenCard!), // Use PlayingCardWidget for top open card
+          PlayingCardWidget(card: topOpenCard!), // Use the card widget
       ],
     );
   }

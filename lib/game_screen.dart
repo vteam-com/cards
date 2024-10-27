@@ -107,8 +107,7 @@ class GameScreenState extends State<GameScreen> {
                     ? context.watch<GameModel>().openCards.last
                     : null, // Correct param usage
                 onDrawCard: () {
-                  context.read<GameModel>().drawCard(
-                      0); // Ensure the method is correctly implemented
+                  context.read<GameModel>().drawCard();
                 },
               ),
               const SizedBox(height: 20),

@@ -5,7 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class GameModel with ChangeNotifier {
   List<PlayingCard> deck = [];
-  List<PlayingCard> openCards = []; // Add openCards list
+  List<PlayingCard> openCards = []; // Tracks cards drawn from the deck
   List<List<PlayingCard>> playerHands = [];
   List<List<bool>> cardVisibility = [];
   final List<String> playerNames;
@@ -48,25 +48,23 @@ class GameModel with ChangeNotifier {
     notifyListeners();
   }
 
-  int calculatePlayerScore(index) {
+  int calculatePlayerScore(int index) {
     return 0; // Placeholder implementation
   }
 
-  void drawCard(int playerIndex) {
+  void drawCard() {
     if (deck.isNotEmpty) {
-      var card = deck.removeLast();
-      playerHands[playerIndex].add(card);
-      cardVisibility[playerIndex].add(true);
-      openCards.add(card); // Add the drawn card to the openCards stack
-      saveGameState(); // Save state after drawing a card
+      var drawnCard = deck.removeLast();
+      openCards.add(drawnCard); // Only add the card to openCards
+      saveGameState();
       notifyListeners();
     }
   }
 
   Future<void> saveGameState() async {
     final prefs = await SharedPreferences.getInstance();
-    prefs.setString('playerHands', _serializeHands(playerHands));
-    prefs.setString('cardVisibility', _serializeVisibility(cardVisibility));
+    prefs.setString('playerHands', serializeHands(playerHands));
+    prefs.setString('cardVisibility', serializeVisibility(cardVisibility));
   }
 
   Future<void> loadGameState() async {
@@ -74,14 +72,14 @@ class GameModel with ChangeNotifier {
     String? handsData = prefs.getString('playerHands');
     String? visibilityData = prefs.getString('cardVisibility');
     if (handsData != null) {
-      playerHands = _deserializeHands(handsData);
+      playerHands = deserializeHands(handsData);
     }
     if (visibilityData != null) {
-      cardVisibility = _deserializeVisibility(visibilityData);
+      cardVisibility = deserializeVisibility(visibilityData);
     }
   }
 
-  String _serializeHands(List<List<PlayingCard>> hands) {
+  String serializeHands(List<List<PlayingCard>> hands) {
     return jsonEncode(hands.map((hand) {
       return hand.map((card) {
         return {'suit': card.suit, 'rank': card.rank, 'value': card.value};
@@ -89,7 +87,7 @@ class GameModel with ChangeNotifier {
     }).toList());
   }
 
-  List<List<PlayingCard>> _deserializeHands(String data) {
+  List<List<PlayingCard>> deserializeHands(String data) {
     List<dynamic> jsonData = jsonDecode(data);
     return jsonData.map<List<PlayingCard>>((hand) {
       return hand.map<PlayingCard>((cardData) {
@@ -102,11 +100,11 @@ class GameModel with ChangeNotifier {
     }).toList();
   }
 
-  String _serializeVisibility(List<List<bool>> visibility) {
+  String serializeVisibility(List<List<bool>> visibility) {
     return jsonEncode(visibility);
   }
 
-  List<List<bool>> _deserializeVisibility(String data) {
+  List<List<bool>> deserializeVisibility(String data) {
     List<dynamic> jsonData = jsonDecode(data);
     return jsonData
         .map<List<bool>>((visibilityList) =>
