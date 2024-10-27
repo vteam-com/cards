@@ -50,7 +50,15 @@ class GameModel with ChangeNotifier {
   }
 
   int calculatePlayerScore(int index) {
-    return 0; // Placeholder implementation
+    int score = 0;
+    for (int i = 0; i < playerHands[index].length; i++) {
+      if (cardVisibility[index][i]) {
+        // Only add the value of revealed cards
+        score += playerHands[index][i]
+            .value; // Assuming PlayingCard has a 'value' property
+      }
+    }
+    return score;
   }
 
   void drawCard() {
