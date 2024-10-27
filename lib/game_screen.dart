@@ -88,7 +88,9 @@ class GameScreenState extends State<GameScreen> {
                                         return GestureDetector(
                                           onTap: () {
                                             gameModel.toggleCardVisibility(
-                                                playerIndex, gridIndex);
+                                              playerIndex,
+                                              gridIndex,
+                                            );
                                             gameModel.saveGameState();
                                           },
                                           child: isVisible

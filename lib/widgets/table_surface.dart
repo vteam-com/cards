@@ -22,13 +22,19 @@ class FeltTablePainter extends CustomPainter {
           Colors.transparent,
         ],
         stops: const [0.0, 0.8],
-      ).createShader(Rect.fromCircle(
+      ).createShader(
+        Rect.fromCircle(
           center: Offset(size.width / 2, size.height / 2),
-          radius: size.width / 2));
+          radius: size.width / 2,
+        ),
+      );
 
     // Draw the radial gradient for the shine
-    canvas.drawCircle(Offset(size.width / 2, size.height / 3), size.width / 3,
-        highlightPaint);
+    canvas.drawCircle(
+      Offset(size.width / 2, size.height / 3),
+      size.width / 3,
+      highlightPaint,
+    );
 
     // Paint for vignette effect
     final Paint vignettePaint = Paint()

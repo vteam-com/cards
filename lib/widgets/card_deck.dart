@@ -3,15 +3,15 @@ import 'package:cards/playing_card_widget.dart';
 import 'package:flutter/material.dart';
 
 class DeckOfCards extends StatelessWidget {
-  final int cardsRemaining; // Ensure this parameter is defined
-  final PlayingCard? topOpenCard;
-  final VoidCallback onDrawCard;
   const DeckOfCards({
     super.key,
     required this.cardsRemaining, // Ensure correct parameter usage
     this.topOpenCard,
     required this.onDrawCard,
   });
+  final int cardsRemaining; // Ensure this parameter is defined
+  final PlayingCard? topOpenCard;
+  final VoidCallback onDrawCard;
 
   @override
   Widget build(BuildContext context) {

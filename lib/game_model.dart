@@ -4,16 +4,17 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class GameModel with ChangeNotifier {
+  // Initialize with the first player by default
+
+  GameModel({required this.playerNames}) {
+    initializeGame();
+  }
   List<PlayingCard> deck = [];
   List<PlayingCard> openCards = []; // Tracks cards drawn from the deck
   List<List<PlayingCard>> playerHands = [];
   List<List<bool>> cardVisibility = [];
   final List<String> playerNames;
-  int activePlayerIndex = 0; // Initialize with the first player by default
-
-  GameModel({required this.playerNames}) {
-    initializeGame();
-  }
+  int activePlayerIndex = 0;
 
   int get numPlayers => playerNames.length;
 
@@ -99,11 +100,13 @@ class GameModel with ChangeNotifier {
   }
 
   String serializeHands(List<List<PlayingCard>> hands) {
-    return jsonEncode(hands.map((hand) {
-      return hand.map((card) {
-        return {'suit': card.suit, 'rank': card.rank, 'value': card.value};
-      }).toList();
-    }).toList());
+    return jsonEncode(
+      hands.map((hand) {
+        return hand.map((card) {
+          return {'suit': card.suit, 'rank': card.rank, 'value': card.value};
+        }).toList();
+      }).toList(),
+    );
   }
 
   List<List<PlayingCard>> deserializeHands(String data) {
@@ -126,8 +129,10 @@ class GameModel with ChangeNotifier {
   List<List<bool>> deserializeVisibility(String data) {
     List<dynamic> jsonData = jsonDecode(data);
     return jsonData
-        .map<List<bool>>((visibilityList) =>
-            visibilityList.map<bool>((item) => item as bool).toList())
+        .map<List<bool>>(
+          (visibilityList) =>
+              visibilityList.map<bool>((item) => item as bool).toList(),
+        )
         .toList();
   }
 }

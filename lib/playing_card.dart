@@ -1,9 +1,8 @@
 class PlayingCard {
+  PlayingCard({required this.suit, required this.rank, required this.value});
   final String suit;
   final String rank;
   final int value;
-
-  PlayingCard({required this.suit, required this.rank, required this.value});
 }
 
 List<PlayingCard> generateDeck({int numberOfDecks = 1}) {
@@ -21,7 +20,7 @@ List<PlayingCard> generateDeck({int numberOfDecks = 1}) {
     '10',
     'J',
     'Q',
-    'K'
+    'K',
   ];
   List<PlayingCard> deck = [];
 
@@ -45,9 +44,17 @@ List<PlayingCard> generateDeck({int numberOfDecks = 1}) {
 
 int getValue(String rank) {
   // Jokers have a special role and can be assigned a value of 0 or another special value as needed
-  if (rank == 'A') return 1;
-  if (rank == 'K') return 10;
-  if (rank == 'Q') return 10;
-  if (rank == 'J') return 10;
+  if (rank == 'A') {
+    return 1;
+  }
+  if (rank == 'K') {
+    return 0;
+  }
+  if (rank == 'Q') {
+    return 12;
+  }
+  if (rank == 'J') {
+    return 11;
+  }
   return int.tryParse(rank) ?? 0;
 }
