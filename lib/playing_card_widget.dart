@@ -49,7 +49,7 @@ class PlayingCardWidget extends StatelessWidget {
           child: Text(
             card.rank,
             style: TextStyle(
-              fontSize: 18,
+              fontSize: 16,
               fontWeight: FontWeight.bold,
               color: _getSuitColor(card.suit),
             ),
@@ -59,7 +59,7 @@ class PlayingCardWidget extends StatelessWidget {
           child: Text(
             _getSuitSymbol(card.suit),
             style: TextStyle(
-              fontSize: 32,
+              fontSize: 15,
               color: _getSuitColor(card.suit),
             ),
           ),
