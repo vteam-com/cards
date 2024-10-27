@@ -48,6 +48,10 @@ class GameModel with ChangeNotifier {
     notifyListeners();
   }
 
+  int calculatePlayerScore(index) {
+    return 0;
+  }
+
   void drawCard(int playerIndex) {
     if (deck.isNotEmpty) {
       playerHands[playerIndex].add(deck.removeLast());

@@ -53,17 +53,21 @@ class PlayerSetupScreenState extends State<PlayerSetupScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                color: Colors.green.shade100,
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: Colors.green.shade100,
+                  borderRadius: BorderRadius.circular(8),
+                ),
                 child: TextField(
                   controller: _controller,
                   decoration: InputDecoration(
                     hintText:
-                        'Enter names separated by space, comma, or semicolon',
+                        'Enter players names separated by space, comma, or semicolon',
                     errorText: _errorText.isEmpty ? null : _errorText,
                   ),
                 ),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 40),
               ElevatedButton(
                 onPressed: () {
                   _startGame(context);

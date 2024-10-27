@@ -1,4 +1,5 @@
 import 'package:cards/game_model.dart';
+import 'package:cards/widgets/player.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'playing_card_widget.dart';
@@ -32,12 +33,20 @@ class GameScreen extends StatelessWidget {
               child: ListView.builder(
                 itemCount: gameModel.numPlayers,
                 itemBuilder: (context, playerIndex) {
+                  // Assuming player names and scores are available in your GameModel
+                  var playerName = 'Player ${playerIndex + 1}'; // Example name
+                  var playerScore = gameModel.calculatePlayerScore(
+                      playerIndex); // Example score method
+
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text('Player ${playerIndex + 1}'),
+                      // Use the Player widget
+                      Player(
+                        name: playerName,
+                        avatarUrl:
+                            'https://example.com/avatar.jpg', // Replace with actual avatar data if available
+                        score: playerScore,
                       ),
                       GridView.builder(
                         shrinkWrap: true,
