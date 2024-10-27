@@ -9,6 +9,7 @@ class GameModel with ChangeNotifier {
   List<List<PlayingCard>> playerHands = [];
   List<List<bool>> cardVisibility = [];
   final List<String> playerNames;
+  int activePlayerIndex = 0; // Initialize with the first player by default
 
   GameModel({required this.playerNames}) {
     initializeGame();
@@ -59,6 +60,16 @@ class GameModel with ChangeNotifier {
       saveGameState();
       notifyListeners();
     }
+  }
+
+  void setActivePlayer(int index) {
+    activePlayerIndex = index;
+    notifyListeners();
+  }
+
+  void nextPlayer() {
+    activePlayerIndex = (activePlayerIndex + 1) % numPlayers;
+    notifyListeners();
   }
 
   Future<void> saveGameState() async {

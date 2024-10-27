@@ -33,7 +33,7 @@
 <text text-anchor="middle" x="132.12" y="-228.75" font-family="Arial" font-size="15.00">game_screen</text>
 </g>
 <!-- /lib/game_screen.dart&#45;&gt;/lib/game_model.dart -->
-<g id="edge5" class="edge">
+<g id="edge4" class="edge">
 <title>/lib/game_screen.dart&#45;&gt;/lib/game_model.dart</title>
 <path fill="none" stroke="#aabbaa" stroke-width="1.3" stroke-opacity="0.533333" d="M112.1,-215.7C102.46,-207.37 90.73,-197.22 80.13,-188.07"/>
 <polygon fill="#aabbaa" fill-opacity="0.533333" stroke="#aabbaa" stroke-width="1.3" stroke-opacity="0.533333" points="82.54,-185.52 72.69,-181.63 77.96,-190.82 82.54,-185.52"/>
@@ -45,7 +45,7 @@
 <text text-anchor="middle" x="143.12" y="-84.75" font-family="Arial" font-size="15.00">playing_card_widget</text>
 </g>
 <!-- /lib/game_screen.dart&#45;&gt;/lib/playing_card_widget.dart -->
-<g id="edge2" class="edge">
+<g id="edge5" class="edge">
 <title>/lib/game_screen.dart&#45;&gt;/lib/playing_card_widget.dart</title>
 <path fill="none" stroke="#aabbaa" stroke-width="1.3" stroke-opacity="0.533333" d="M133.47,-215.59C135.32,-191.72 138.67,-148.53 140.89,-119.8"/>
 <polygon fill="#aabbaa" fill-opacity="0.533333" stroke="#aabbaa" stroke-width="1.3" stroke-opacity="0.533333" points="144.36,-120.31 141.65,-110.07 137.39,-119.77 144.36,-120.31"/>
@@ -57,7 +57,7 @@
 <text text-anchor="middle" x="202.12" y="-156.75" font-family="Arial" font-size="15.00">card_deck</text>
 </g>
 <!-- /lib/game_screen.dart&#45;&gt;/lib/widgets/card_deck.dart -->
-<g id="edge3" class="edge">
+<g id="edge2" class="edge">
 <title>/lib/game_screen.dart&#45;&gt;/lib/widgets/card_deck.dart</title>
 <path fill="none" stroke="#aabbaa" stroke-width="1.3" stroke-opacity="0.533333" d="M149.43,-215.7C157.65,-207.47 167.64,-197.48 176.7,-188.42"/>
 <polygon fill="#aabbaa" fill-opacity="0.533333" stroke="#aabbaa" stroke-width="1.3" stroke-opacity="0.533333" points="179.03,-191.04 183.63,-181.5 174.08,-186.09 179.03,-191.04"/>
@@ -69,7 +69,7 @@
 <text text-anchor="middle" x="291.12" y="-156.75" font-family="Arial" font-size="15.00">player</text>
 </g>
 <!-- /lib/game_screen.dart&#45;&gt;/lib/widgets/player.dart -->
-<g id="edge4" class="edge">
+<g id="edge3" class="edge">
 <title>/lib/game_screen.dart&#45;&gt;/lib/widgets/player.dart</title>
 <path fill="none" stroke="#aabbaa" stroke-width="1.3" stroke-opacity="0.533333" d="M172.88,-215.54C194.23,-206.35 221.01,-194.72 251.86,-180.98"/>
 <polygon fill="#aabbaa" fill-opacity="0.533333" stroke="#aabbaa" stroke-width="1.3" stroke-opacity="0.533333" points="252.97,-184.31 260.67,-177.04 250.11,-177.92 252.97,-184.31"/>

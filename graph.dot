@@ -13,10 +13,10 @@ digraph "" {
   "/lib/widgets/table_surface.dart" [label="table_surface"];
   "/test/widget_test.dart" [label="widget_test"];
   "/lib/game_model.dart" -> "/lib/playing_card.dart";
-  "/lib/game_screen.dart" -> "/lib/playing_card_widget.dart";
   "/lib/game_screen.dart" -> "/lib/widgets/card_deck.dart";
   "/lib/game_screen.dart" -> "/lib/widgets/player.dart";
   "/lib/game_screen.dart" -> "/lib/game_model.dart";
+  "/lib/game_screen.dart" -> "/lib/playing_card_widget.dart";
   "/lib/main.dart" -> "/lib/setup_screen.dart";
   "/lib/playing_card_widget.dart" -> "/lib/playing_card.dart";
   "/lib/setup_screen.dart" -> "/lib/game_model.dart";

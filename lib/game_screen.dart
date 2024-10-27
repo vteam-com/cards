@@ -1,9 +1,9 @@
-import 'package:cards/playing_card_widget.dart';
 import 'package:cards/widgets/card_deck.dart';
 import 'package:cards/widgets/player.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'game_model.dart';
+import 'playing_card_widget.dart';
 
 class GameScreen extends StatefulWidget {
   const GameScreen({super.key});
@@ -44,6 +44,8 @@ class GameScreenState extends State<GameScreen> {
                                   gameModel.playerNames[playerIndex];
                               var playerScore =
                                   gameModel.calculatePlayerScore(playerIndex);
+                              bool isActivePlayer =
+                                  gameModel.activePlayerIndex == playerIndex;
 
                               return Container(
                                 width: 300,
@@ -51,6 +53,12 @@ class GameScreenState extends State<GameScreen> {
                                 decoration: BoxDecoration(
                                   color: Colors.green.shade800.withAlpha(100),
                                   borderRadius: BorderRadius.circular(20.0),
+                                  border: isActivePlayer
+                                      ? Border.all(
+                                          color: Colors.yellow,
+                                          width: 4.0,
+                                        )
+                                      : null,
                                 ),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -105,7 +113,7 @@ class GameScreenState extends State<GameScreen> {
                 cardsRemaining: context.watch<GameModel>().deck.length,
                 topOpenCard: context.watch<GameModel>().openCards.isNotEmpty
                     ? context.watch<GameModel>().openCards.last
-                    : null, // Correct param usage
+                    : null,
                 onDrawCard: () {
                   context.read<GameModel>().drawCard();
                 },
