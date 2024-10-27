@@ -1,11 +1,11 @@
 import 'dart:convert';
-
 import 'package:cards/playing_card.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class GameModel with ChangeNotifier {
   List<PlayingCard> deck = [];
+  List<PlayingCard> openCards = []; // Add openCards list
   List<List<PlayingCard>> playerHands = [];
   List<List<bool>> cardVisibility = [];
   final List<String> playerNames;
@@ -49,13 +49,15 @@ class GameModel with ChangeNotifier {
   }
 
   int calculatePlayerScore(index) {
-    return 0;
+    return 0; // Placeholder implementation
   }
 
   void drawCard(int playerIndex) {
     if (deck.isNotEmpty) {
-      playerHands[playerIndex].add(deck.removeLast());
+      var card = deck.removeLast();
+      playerHands[playerIndex].add(card);
       cardVisibility[playerIndex].add(true);
+      openCards.add(card); // Add the drawn card to the openCards stack
       saveGameState(); // Save state after drawing a card
       notifyListeners();
     }
@@ -63,14 +65,12 @@ class GameModel with ChangeNotifier {
 
   Future<void> saveGameState() async {
     final prefs = await SharedPreferences.getInstance();
-    // Save data to preferences
     prefs.setString('playerHands', _serializeHands(playerHands));
     prefs.setString('cardVisibility', _serializeVisibility(cardVisibility));
   }
 
   Future<void> loadGameState() async {
     final prefs = await SharedPreferences.getInstance();
-    // Load data from preferences
     String? handsData = prefs.getString('playerHands');
     String? visibilityData = prefs.getString('cardVisibility');
     if (handsData != null) {

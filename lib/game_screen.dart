@@ -1,8 +1,9 @@
-import 'package:cards/game_model.dart';
+import 'package:cards/playing_card_widget.dart';
+import 'package:cards/widgets/card_deck.dart';
 import 'package:cards/widgets/player.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'playing_card_widget.dart';
+import 'game_model.dart';
 
 class GameScreen extends StatefulWidget {
   const GameScreen({super.key});
@@ -23,7 +24,7 @@ class GameScreenState extends State<GameScreen> {
           Positioned.fill(
             child: Image.asset(
               'assets/images/background.png',
-              fit: BoxFit.cover, // Ensures the image covers the whole area
+              fit: BoxFit.cover,
             ),
           ),
           Column(
@@ -54,15 +55,11 @@ class GameScreenState extends State<GameScreen> {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    // Use the Player widget
                                     Player(
                                       name: playerName,
                                       score: playerScore,
                                     ),
-                                    const SizedBox(
-                                      height: 20,
-                                      width: 20,
-                                    ),
+                                    const SizedBox(height: 20),
                                     GridView.builder(
                                       shrinkWrap: true,
                                       physics:
@@ -92,11 +89,7 @@ class GameScreenState extends State<GameScreen> {
                                         );
                                       },
                                     ),
-
-                                    const SizedBox(
-                                      height: 20,
-                                      width: 20,
-                                    ),
+                                    const SizedBox(height: 20),
                                   ],
                                 ),
                               );
@@ -108,6 +101,17 @@ class GameScreenState extends State<GameScreen> {
                   ),
                 ),
               ),
+              DeckOfCards(
+                cardsRemaining: context.watch<GameModel>().deck.length,
+                topOpenCard: context.watch<GameModel>().openCards.isNotEmpty
+                    ? context.watch<GameModel>().openCards.last
+                    : null, // Correct param usage
+                onDrawCard: () {
+                  context.read<GameModel>().drawCard(
+                      0); // Ensure the method is correctly implemented
+                },
+              ),
+              const SizedBox(height: 20),
             ],
           ),
         ],

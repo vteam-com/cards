@@ -10,8 +10,8 @@ class PlayingCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.all(4.0),
-      width: 60.0,
-      height: 80.0,
+      width: 100,
+      height: 140,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(8.0),
